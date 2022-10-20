@@ -1,48 +1,45 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.Graphics;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class App {
 
     public static void Jeu() {
+  
+
+
+        JPanel background = new JPanel();
+        
+        GridBagLayout gbl = new GridBagLayout();
+        background.setLayout(gbl);
+        background.setBackground(Color.lightGray);
+
+
+        JPanel puissance4 = new JPanel();
+        GridLayout test = new GridLayout(6,7);
+        puissance4.setBackground(Color.red);
+        puissance4.setLayout(test);
+        
+        for(int i = 0 ;i<42;i+=1){
+            puissance4.add(new JLabel("z"));
+        }
+        
+        GridBagConstraints gbc = new GridBagConstraints();
+
+        
+
 
 
         JFrame fenetre = new JFrame();
-        JDialog quitter = new JDialog(fenetre, "Quitter ?", true);
-
         fenetre.setTitle("Puissance 4");
         fenetre.setLocation(0,0);
         fenetre.setSize(300, 300);
         fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JPanel titre = new JPanel();
-        titre.add(new JLabel("Puissance 4"), BorderLayout.CENTER);
-
-
-        Dessin fond = new Dessin("fond_du_jeu");
-        JPanel fond_du_jeu = new JPanel();
-        GridLayout fond_du_jeu_gridlayout = new GridLayout(1,1);
-        fond_du_jeu.setLayout(fond_du_jeu_gridlayout);
-        fond_du_jeu.add(fond);
-
-        JPanel jeu = new JPanel();
-        GridLayout jeu_gridlayout = new GridLayout(9,9);
-        jeu.setLayout(jeu_gridlayout);
-        jeu.add(new Dessin("jeton"));
-
-
-
-        //temporaire
-        fenetre.add(new JPanel(),BorderLayout.SOUTH);
-        fenetre.add(new JPanel(),BorderLayout.WEST);
-        fenetre.add(new JPanel(),BorderLayout.EAST);
-        //fin
-
-
-        fenetre.add(titre, BorderLayout.NORTH);
-        fenetre.add(fond_du_jeu, BorderLayout.CENTER);
+        background.add(puissance4);
+        fenetre.add(background);
 
         fenetre.setVisible(true);
     }
