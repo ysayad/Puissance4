@@ -2,16 +2,12 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Circle extends JComponent {
-    private int x;
-    private int y;
     private int radius;
-    private Color color;
+    private int[][] board;
 
-    public Circle(int x, int y, int radius, Color color) {
-        this.x = x;
-        this.y = y;
+    public Circle(int radius, int[][] board) {
         this.radius = radius;
-        this.color = color;
+        this.board = board;
     }
 
     @Override
@@ -23,7 +19,20 @@ public class Circle extends JComponent {
             brush.fillRect(0, 0, this.getWidth(), this.getHeight());
         }
 
-        brush.setColor(this.color);
-        brush.fillOval(this.x, this.y, this.radius, this.radius);
+        for (int r = 0  r < this.board.length; r++) {
+            for (int c = 0  c < this.board[r].length; c++) {
+                if (this.board[r][c] == 0) {
+                    brush.setColor(Color.LIGHT_GRAY);
+                    brush.fillOval((r * 75) + 50, (c * 75) + 50, this.radius, this.radius);
+                } else if (this.board[r][c] == 1) {
+                    brush.setColor(Color.RED);
+                    brush.fillOval((r * 75) + 50, (c * 75) + 50, this.radius, this.radius);
+                } else if (this.board[r][c] == 2) {
+                    brush.setColor(Color.YELLOW);
+                    brush.fillOval((r * 75) + 50, (c * 75) + 50, this.radius, this.radius);
+                }
+            }
+        }
+
     }
 }
