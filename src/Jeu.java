@@ -139,7 +139,7 @@ public class Jeu {
                 }
             }
         }
-        System.out.println("diagonale droite : "+ cpt);
+        System.out.println("bas gauche : "+ cpt);
 
 
         cpt = 1;
@@ -154,10 +154,38 @@ public class Jeu {
                 }
             }
         }
-        System.out.println("diagonale gauche : "+ cpt);
+        System.out.println("diagonale haut droite : "+ cpt);
 
 
 
+        cpt = 1;
+        for(int i = 1; i<=3 ; i+=1){
+            if (this.ldernier_coups+i < 6 && this.cdernier_coups-i >= 0){
+                if(this.grille[this.ldernier_coups+i][this.cdernier_coups-i]==this.dernier_joueur){
+                    cpt+=1;
+                    if (cpt == 4){
+                        System.out.println("Le joueur "+this.dernier_joueur+" a Gagné !");
+                        break;
+                    }
+                }
+            }
+        }
+        System.out.println("diagonale haut gauche : "+ cpt);
+
+
+        cpt = 1;
+        for(int i = 1; i<=3 ; i+=1){
+            if (this.ldernier_coups-i >= 0 && this.cdernier_coups+i < 7){
+                if(this.grille[this.ldernier_coups-i][this.cdernier_coups+i]==this.dernier_joueur){
+                    cpt+=1;
+                    if (cpt == 4){
+                        System.out.println("Le joueur "+this.dernier_joueur+" a Gagné !");
+                        break;
+                    }
+                }
+            }
+        }
+        System.out.println("diagonale bas droite : "+ cpt);
 
 
         System.out.println("winval : "+cpt);
