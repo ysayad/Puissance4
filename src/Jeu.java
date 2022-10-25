@@ -3,6 +3,10 @@ import java.util.Scanner;
 public class Jeu {
     int[][] grille;
     int joueur;
+    int dernier_joueur;
+    int ldernier_coups;
+    int cdernier_coups;
+
     public Jeu() {
         this.joueur = 1;
         this.grille = new int[6][7];
@@ -16,9 +20,12 @@ public class Jeu {
     public void jouer(){
         Scanner input = new Scanner(System.in);
         this.ajout(input.nextInt());
+        this.verif_gagner();
     }
 
     public void ajout(int num_colonne) {
+        this.cdernier_coups = num_colonne;
+        this.dernier_joueur = this.joueur;
         if (this.grille[0][num_colonne]!=0) {
             jouer();
         } else {
@@ -28,19 +35,23 @@ public class Jeu {
                     if (this.joueur==1) {
                         this.grille[i - 1][num_colonne] = 1;
                         this.joueur=2;
+                        this.ldernier_coups=i-1;
                         break;
                     }
                     this.grille[i - 1][num_colonne] = 2;
                     this.joueur=1;
+                    this.ldernier_coups=i-1;
                     break;
                 } else if (this.grille[5][num_colonne] == 0) {
 
                     if (this.joueur==1) {
                         this.grille[5][num_colonne] = 1;
                         this.joueur=2;
+                        this.ldernier_coups=5;
                         break;
                     }
                     this.grille[5][num_colonne] = 2;
+                    this.ldernier_coups=5;
                     this.joueur=1;
                     break;
 
@@ -66,7 +77,90 @@ public class Jeu {
 
 
     public void verif_gagner(){
+        int cpt = 1;
+        for(int j = 1; j<=3 ; j+=1){
+            if (this.cdernier_coups+j < 6){
+                if(this.grille[this.ldernier_coups][this.cdernier_coups+j]==this.dernier_joueur){
+                    cpt+=1;
+                    if (cpt == 4){
+                        System.out.println("Le joueur "+this.dernier_joueur+" a Gagné !");
+                        break;
+                    }
+                }
+            }
+        }
+        System.out.println("droite : "+ cpt);
 
+
+        for(int j = 1; j<=3 ; j+=1){
+            if (this.cdernier_coups-j >= 0){
+                if(this.grille[this.ldernier_coups][this.cdernier_coups-j]==this.dernier_joueur){
+                    cpt+=1;
+                    if (cpt == 4){
+                        System.out.println("Le joueur "+this.dernier_joueur+" a Gagné !");
+                        break;
+                    }
+
+                }
+            }
+        }
+        System.out.println("gauche : "+ cpt);
+
+
+
+
+
+
+
+        cpt = 1;
+        for(int i = 1; i<=3 ; i+=1){
+            if (this.ldernier_coups+i < 6){
+                if(this.grille[this.ldernier_coups+i][this.cdernier_coups]==this.dernier_joueur){
+                    cpt+=1;
+                    if (cpt == 4){
+                        System.out.println("Le joueur "+this.dernier_joueur+" a Gagné !");
+                        break;
+                    }
+                }
+            }
+        }
+        System.out.println("bas : "+ cpt);
+
+
+        cpt = 1;
+        for(int i = 1; i<=3 ; i+=1){
+            if (this.ldernier_coups-i >= 0 && this.cdernier_coups-i >= 0){
+                if(this.grille[this.ldernier_coups-i][this.cdernier_coups-i]==this.dernier_joueur){
+                    cpt+=1;
+                    if (cpt == 4){
+                        System.out.println("Le joueur "+this.dernier_joueur+" a Gagné !");
+                        break;
+                    }
+                }
+            }
+        }
+        System.out.println("diagonale droite : "+ cpt);
+
+
+        cpt = 1;
+        for(int i = 1; i<=3 ; i+=1){
+            if (this.ldernier_coups+i < 6 && this.cdernier_coups+i < 7){
+                if(this.grille[this.ldernier_coups+i][this.cdernier_coups+i]==this.dernier_joueur){
+                    cpt+=1;
+                    if (cpt == 4){
+                        System.out.println("Le joueur "+this.dernier_joueur+" a Gagné !");
+                        break;
+                    }
+                }
+            }
+        }
+        System.out.println("diagonale gauche : "+ cpt);
+
+
+
+
+
+        System.out.println("winval : "+cpt);
     }
 
 
