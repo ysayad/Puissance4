@@ -31,17 +31,17 @@ public class Circle extends JPanel {
             brush.fillRect(0, 0, this.getWidth(), this.getHeight());
         }
 
-        for (int r = 0 ; r < this.board.length; r++) {
-            for (int c = 0 ; c < this.board[r].length; c++) {
+        for (int r = 0 ; r < 6; r++) {
+            for (int c = 0 ; c < 7; c++) {
                 if (this.board[r][c] == 0) {
                     brush.setColor(Color.LIGHT_GRAY);
-                    brush.fillOval((r * 75) + 50, (c * 75) + 50, this.radius, this.radius);
+                    brush.fillOval((c * 75) + 50, (r * 75) + 50, this.radius, this.radius);
                 } else if (this.board[r][c] == 1) {
                     brush.setColor(Color.RED);
-                    brush.fillOval((r * 75) + 50, (c * 75) + 50, this.radius, this.radius);
+                    brush.fillOval((c * 75) + 50, (r * 75) + 50, this.radius, this.radius);
                 } else if (this.board[r][c] == 2) {
                     brush.setColor(Color.YELLOW);
-                    brush.fillOval((r * 75) + 50, (c * 75) + 50, this.radius, this.radius);
+                    brush.fillOval((c * 75) + 50, (r * 75) + 50, this.radius, this.radius);
                 }
             }
         }

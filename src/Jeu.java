@@ -1,5 +1,8 @@
 import java.lang.*;
 import java.util.Scanner;
+import javax.swing.*;
+import java.awt.*;
+
 public class Jeu {
     int[][] grille;
     int joueur;
@@ -197,9 +200,20 @@ public class Jeu {
 
     public static void main(String[] args) {
         Jeu jeu = new Jeu();
+
+        JFrame fenetre = new JFrame();
+        fenetre.setTitle("Puissance 4");
+        fenetre.setLocation(0,0);
+        fenetre.setSize(1920, 900);
+        fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        Circle test = new Circle(50, jeu.grille);
+        fenetre.add(test);
+        fenetre.setVisible(true);
+
         while(true) {
             jeu.jouer();
             jeu.affiche_matrice();
+            test.repaint();
         }
     }
 }
