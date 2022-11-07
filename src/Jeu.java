@@ -9,6 +9,7 @@ public class Jeu {
     int dernier_joueur;
     int ldernier_coups;
     int cdernier_coups;
+    Circle test;
 
     public Jeu() {
         this.joueur = 1;
@@ -18,19 +19,23 @@ public class Jeu {
                 this.grille[i][j]=0;
             }
         }
+        this.test = new Circle(50, this);
     }
 
-    public void jouer(){
-        Scanner input = new Scanner(System.in);
-        this.ajout(input.nextInt());
+    public void repaint(){
+        this.test.repaint();
+    }
+    public void jouer(int zebi){
+        this.ajout(zebi);
         this.verif_gagner();
+        this.repaint();
     }
 
     public void ajout(int num_colonne) {
         this.cdernier_coups = num_colonne;
         this.dernier_joueur = this.joueur;
         if (this.grille[0][num_colonne]!=0) {
-            jouer();
+            jouer(num_colonne);
         } else {
 
             for (int i = 0; i < 6; i += 1) {
@@ -206,14 +211,9 @@ public class Jeu {
         fenetre.setLocation(0,0);
         fenetre.setSize(1920, 900);
         fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        Circle test = new Circle(50, jeu.grille);
-        fenetre.add(test);
+        fenetre.add(jeu.test);
         fenetre.setVisible(true);
 
-        while(true) {
-            jeu.jouer();
-            jeu.affiche_matrice();
-            test.repaint();
-        }
+
     }
 }
