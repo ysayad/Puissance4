@@ -1,27 +1,34 @@
 import java.awt.*;
 import java.awt.event.*;
 public class CircleListener implements MouseListener{
-    Graphics circle;
-    Jeu jeu;
-    int colonne;
 
-    public CircleListener(Graphics circle,int colonne, Jeu jeu) {
-        this.circle = circle;
+    Jeu jeu;
+
+    public CircleListener(Jeu jeu) {
+
         this.jeu = jeu;
-        this.colonne = colonne;
     }
 
 
     public void mouseClicked(MouseEvent e) {
-        this.jeu.ajout(this.colonne);
-        this.jeu.test.repaint();
-        System.out.println(this.colonne);
-    }
-    public void mouseEntered(MouseEvent e) {
-        System.out.println("ENTERED HEHEH");
-        System.out.println(this.colonne);
+        int x=e.getX();
 
+        for (int j = 0 ; j<7 ;j+=1 ){
+
+        if (x>(j * 75) + 50 && x<((j+1) * 75) + 50){
+            this.jeu.ajout(j);
+        }
+
+        }
+
+        if (this.jeu.verif_gagner()!=-1){
+            this.jeu.ecranfin();
+            this.jeu.fenetre.removeMouseListener(this);
+        }
+
+        this.jeu.test.repaint();
     }
+    public void mouseEntered(MouseEvent e) {}
     public void mouseExited(MouseEvent e) {}
     public void mousePressed(MouseEvent e) {}
     public void mouseReleased(MouseEvent e) {}

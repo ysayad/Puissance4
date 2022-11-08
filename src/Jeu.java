@@ -10,8 +10,10 @@ public class Jeu {
     int ldernier_coups;
     int cdernier_coups;
     Circle test;
+    JFrame fenetre;
 
-    public Jeu() {
+    public Jeu(JFrame fenetre) {
+        this.fenetre = fenetre;
         this.joueur = 1;
         this.grille = new int[6][7];
         for (int i = 0 ; i < 6 ; i += 1 ) {
@@ -84,7 +86,7 @@ public class Jeu {
 
 
 
-    public void verif_gagner(){
+    public int verif_gagner(){
         int cpt = 1;
         for(int j = 1; j<=3 ; j+=1){
             if (this.cdernier_coups+j < 6){
@@ -92,7 +94,7 @@ public class Jeu {
                     cpt+=1;
                     if (cpt == 4){
                         System.out.println("Le joueur "+this.dernier_joueur+" a Gagné !");
-                        break;
+                        return this.dernier_joueur;
                     }
                 }
             }
@@ -106,7 +108,7 @@ public class Jeu {
                     cpt+=1;
                     if (cpt == 4){
                         System.out.println("Le joueur "+this.dernier_joueur+" a Gagné !");
-                        break;
+                        return this.dernier_joueur;
                     }
 
                 }
@@ -127,7 +129,7 @@ public class Jeu {
                     cpt+=1;
                     if (cpt == 4){
                         System.out.println("Le joueur "+this.dernier_joueur+" a Gagné !");
-                        break;
+                        return this.dernier_joueur;
                     }
                 }
             }
@@ -142,7 +144,7 @@ public class Jeu {
                     cpt+=1;
                     if (cpt == 4){
                         System.out.println("Le joueur "+this.dernier_joueur+" a Gagné !");
-                        break;
+                        return this.dernier_joueur;
                     }
                 }
             }
@@ -157,7 +159,7 @@ public class Jeu {
                     cpt+=1;
                     if (cpt == 4){
                         System.out.println("Le joueur "+this.dernier_joueur+" a Gagné !");
-                        break;
+                        return this.dernier_joueur;
                     }
                 }
             }
@@ -173,7 +175,7 @@ public class Jeu {
                     cpt+=1;
                     if (cpt == 4){
                         System.out.println("Le joueur "+this.dernier_joueur+" a Gagné !");
-                        break;
+                        return this.dernier_joueur;
                     }
                 }
             }
@@ -188,7 +190,7 @@ public class Jeu {
                     cpt+=1;
                     if (cpt == 4){
                         System.out.println("Le joueur "+this.dernier_joueur+" a Gagné !");
-                        break;
+                        return this.dernier_joueur;
                     }
                 }
             }
@@ -197,22 +199,31 @@ public class Jeu {
 
 
         System.out.println("winval : "+cpt);
+        return -1;
     }
 
 
-
+    public void ecranfin(){
+        this.fenetre.add(new JLabel("le joueur "+this.dernier_joueur+" à gagné !"), BorderLayout.NORTH);
+        this.fenetre.invalidate();
+        this.fenetre.validate();
+        this.fenetre.repaint();
+    }
 
 
     public static void main(String[] args) {
-        Jeu jeu = new Jeu();
 
         JFrame fenetre = new JFrame();
         fenetre.setTitle("Puissance 4");
         fenetre.setLocation(0,0);
         fenetre.setSize(1920, 900);
         fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        fenetre.add(jeu.test);
+        Jeu jeu = new Jeu(fenetre);
+        fenetre.add(jeu.test, BorderLayout.CENTER);
+        jeu.test.setBackground(Color.GRAY);
         fenetre.setVisible(true);
+        CircleListener listener = new CircleListener(jeu);
+        fenetre.addMouseListener(listener);
 
 
     }

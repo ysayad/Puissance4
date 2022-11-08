@@ -44,7 +44,6 @@ public class Circle extends JPanel {
                     this.colonne = c;
                     this.brush.setColor(Color.LIGHT_GRAY);
                     this.brush.fillOval((c * 75) + 50, (r * 75) + 50, this.radius, this.radius);
-                    addMouseListener(new CircleListener(this.brush,this.colonne, jeu));
                 } else if (jeu.grille[r][c] == 1) {
                     this.brush.setColor(Color.RED);
                     this.brush.fillOval((c * 75) + 50, (r * 75) + 50, this.radius, this.radius);
