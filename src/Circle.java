@@ -50,6 +50,9 @@ public class Circle extends JPanel {
                 } else if (jeu.grille[r][c] == 2) {
                     this.brush.setColor(Color.YELLOW);
                     this.brush.fillOval((c * 75) + 50, (r * 75) + 50, this.radius, this.radius);
+                } else if (jeu.grille[r][c] == 3) {
+                    this.brush.setColor(Color.PINK);
+                    this.brush.fillOval((c * 75) + 50, (r * 75) + 50, this.radius, this.radius);
                 }
             }
         }

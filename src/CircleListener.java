@@ -21,7 +21,7 @@ public class CircleListener implements MouseListener{
 
         }
 
-        if (this.jeu.verif_gagner()!=-1){
+        if (this.jeu.verif_gagner_p3()!=-1){
             this.jeu.ecranfin();
             this.jeu.fenetre.removeMouseListener(this);
         }
