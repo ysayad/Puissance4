@@ -5,6 +5,8 @@ public class Circle extends JPanel {
     private int radius;
     private Jeu jeu;
     private int colonne;
+    private int colNum;
+    private int rowNum;
     Graphics brush;
 
     /**
@@ -12,14 +14,17 @@ public class Circle extends JPanel {
      * @param radius the radius of the circle
      */
     public Circle(int radius, Jeu jeu) {
+        this.setPreferredSize(new Dimension(700, 700));
         this.radius = radius;
         this.jeu = jeu;
+        this.colNum = this.jeu.grille[0].length;
+        this.rowNum = this.jeu.grille.length;
+
     }
 
     public int  getcolonne(){
         return this.colonne;
     }
-
 
     /**
      * Paints the circle
@@ -38,8 +43,8 @@ public class Circle extends JPanel {
             this.brush.fillRect(0, 0, this.getWidth(), this.getHeight());
         }
 
-        for (int r = 0 ; r < 6; r++) {
-            for (int c = 0 ; c < 7; c++) {
+        for (int r = 0 ; r < rowNum; r++) {
+            for (int c = 0 ; c < colNum; c++) {
                 if (jeu.grille[r][c] == 0) {
                     this.colonne = c;
                     this.brush.setColor(Color.LIGHT_GRAY);
