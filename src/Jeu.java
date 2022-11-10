@@ -180,5 +180,35 @@ public class Jeu {
     
     }
 
+    public void removePlayerToken (int player) {
+        int emptySpace = 0;
+
+        for (int i = 0 ; i < rowNum ; i++ ) {
+            for (int j = 0 ; j < colNum ; j++){
+                if (this.grille[i][j] == player) {
+                    this.grille[i][j] = 0;
+                    emptySpace++;
+
+                }
+
+            }
+
+        }
+
+        for (int e = 0 ; e < emptySpace ; e++) {
+            for (int i = rowNum - 1 ; i > 0 ; i--) {
+                for (int j = 0 ; j < colNum ; j++) {
+                    if (this.grille[i][j] == 0) {
+                        this.grille[i][j] = this.grille[i-1][j];
+                        this.grille[i-1][j] = 0;
+                    }
+                    
+                }
+
+            }
+
+        }
+
+    }
 
 }

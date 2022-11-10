@@ -20,23 +20,21 @@ public class CircleListener implements MouseListener{
                 }
 
             }
-            
-        
-        } else {
-            System.out.println("Le joueur "+this.jeu.getPlayer()+" a gagné");
-            if (this.jeu.getPlayerRemaining() > 2) {
-                this.jeu.removePlayer();
+
+            if (this.jeu.verif(this.jeu.getPlayer(), this.jeu.getMode())) {
+                System.out.println("Le joueur "+this.jeu.getPlayer()+" a gagné");
+                if (this.jeu.getPlayerRemaining() > 2) {
+                    this.jeu.removePlayer();
+                    this.jeu.removePlayerToken(this.jeu.getPlayer());
                 
+                }
+
+                if (this.jeu.getPlayerRemaining() == 2) {
+                    this.jeu.setMode(4);
+
+                }
             }
-
-            if (this.jeu.getPlayerRemaining() == 2) {
-                this.jeu.setMode(4);
-
-            }
-            
-            
-            
-
+        
         }
 
         this.jeu.gridCircle.repaint();
