@@ -1,4 +1,5 @@
-import javax.swing.JFrame;
+import javax.swing.*;
+import java.awt.*;
 
 public class App {
     public static void main(String[] args) {
@@ -8,10 +9,14 @@ public class App {
         window.setLocation(0, 0);
 
         Jeu jeu = new Jeu();
-        window.add(jeu.gridCircle);
+        JPanel panneau = new JPanel();
+        panneau.setLayout(new GridBagLayout());
+        panneau.add(jeu.gridCircle);
+
+        window.add(panneau);
 
         CircleListener listener = new CircleListener(jeu);
-        window.addMouseListener(listener);
+        jeu.gridCircle.addMouseListener(listener);
 
         window.setVisible(true);
     }

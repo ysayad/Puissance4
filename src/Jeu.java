@@ -2,7 +2,7 @@ import java.util.*;
 
 public class Jeu {
     int[][] grille;
-    private List<Integer> playerList = new LinkedList<>(List.of(1,2,3));
+    private List<Integer> playerList = new LinkedList<Integer>();
     private int player = 3;
     private int playerRemaining = playerList.size();
     Circle gridCircle;
@@ -12,6 +12,9 @@ public class Jeu {
     
 
     public Jeu() {
+        playerList.add(1);
+        playerList.add(2);
+        playerList.add(3);
         this.grille = new int[rowNum][colNum];
 
         for (int i = 0 ; i < rowNum ; i++ ) {
