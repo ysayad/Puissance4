@@ -14,8 +14,8 @@ public class Jeu {
     public Jeu() {
         this.grille = new int[rowNum][colNum];
 
-        for (int i = 0 ; i < rowNum ; i += 1 ) {
-            for (int j = 0 ; j < colNum ; j += 1 ){
+        for (int i = 0 ; i < rowNum ; i++ ) {
+            for (int j = 0 ; j < colNum ; j++){
                 this.grille[i][j]=0;
             }
 
@@ -46,8 +46,8 @@ public class Jeu {
 
 
     public void affiche_matrice(){
-        for (int i = 0 ; i < 6 ; i += 1 ) {
-            for (int j = 0 ; j < 7 ; j += 1 ){
+        for (int i = 0 ; i < 6 ; i++) {
+            for (int j = 0 ; j < 7 ; j++){
                 System.out.print(this.grille[i][j]);
             }
             System.out.println("");
@@ -113,7 +113,7 @@ public class Jeu {
 
                 }
 
-                if (row <= rowNum - mode && col >= colNum - mode) {
+                if (row <= rowNum - mode && col >= mode - 1) {
                     switch (mode) {
                         case 3:
                             if (this.grille[row][col] == player && this.grille[row + 1][col - 1] == player && this.grille[row + 2][col - 2] == player) {
