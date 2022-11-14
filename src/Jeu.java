@@ -11,8 +11,9 @@ public class Jeu {
     private int rowNum = 6;
     
 
-    public Jeu() {
+    public Jeu(int mode) {
         this.grille = new int[rowNum][colNum];
+        this.mode = mode;
 
         for (int i = 0 ; i < rowNum ; i++ ) {
             for (int j = 0 ; j < colNum ; j++){

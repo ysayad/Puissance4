@@ -8,7 +8,7 @@ public class App {
         window.setSize(1920, 1080);
         window.setLocation(0, 0);
 
-        Jeu jeu = new Jeu();
+        Jeu jeu = new Jeu(4);
         JPanel panneau = new JPanel();
         panneau.setLayout(new GridBagLayout());
         panneau.add(jeu.gridCircle);
@@ -19,5 +19,7 @@ public class App {
         jeu.gridCircle.addMouseListener(listener);
 
         window.setVisible(true);
+
     }
+
 }
