@@ -5,10 +5,12 @@ public class Jeu {
     private List<Integer> playerList = new LinkedList<>(Arrays.asList(1,2,3));
     private int player = 3;
     private int playerRemaining = playerList.size();
-    Circle gridCircle;
+    private Circle gridCircle;
+    private CurrentPlayer currentPlayer = new CurrentPlayer();
     private int mode = 3;
     private int colNum = 7;
     private int rowNum = 6;
+    
     
 
     public Jeu(int mode) {
@@ -34,6 +36,9 @@ public class Jeu {
 
 
     public void ajout(int num_colonne) {
+        if (this.grille[0][num_colonne] == 0) {
+            this.switchPlayer();
+        }
         for (int i = rowNum - 1; i >= 0 ; i--) {
             if (this.grille[i][num_colonne] == 0) {
                 this.grille[i][num_colonne] = this.player;
@@ -151,6 +156,9 @@ public class Jeu {
 
         }
 
+        this.currentPlayer.setPlayer(this.player);
+        this.currentPlayer.repaint();
+
     }
 
     public void removePlayer () {
@@ -178,6 +186,16 @@ public class Jeu {
 
     public void setMode (int n) {
         this.mode = n;
+    
+    }
+
+    public Circle getGridCircle() {
+        return this.gridCircle;
+    
+    }
+
+    public CurrentPlayer getCurrentPlayer() {
+        return this.currentPlayer;
     
     }
 

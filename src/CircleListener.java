@@ -1,12 +1,10 @@
-
 import java.awt.event.*;
 public class CircleListener implements MouseListener{
-
     Jeu jeu;
 
     public CircleListener(Jeu jeu) {
-
         this.jeu = jeu;
+
     }
 
 
@@ -16,8 +14,8 @@ public class CircleListener implements MouseListener{
     
             for (int j = 0 ; j<7 ;j+=1 ){
                 if (x>(j * 75) + 50 && x<((j+1) * 75) + 50){
-                    this.jeu.switchPlayer();
                     this.jeu.ajout(j);
+
                 }
 
             }
@@ -38,7 +36,7 @@ public class CircleListener implements MouseListener{
         
         }
 
-        this.jeu.gridCircle.repaint();
+        this.jeu.getGridCircle().repaint();
 
     }
 
