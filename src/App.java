@@ -24,6 +24,9 @@ public class App {
         jeu.getGridCircle().addMouseListener(listener);
 
         window.setVisible(true);
+        Test t = new Test();
+
+        t.slide(jeu.getGridCircle());
 
     }
 

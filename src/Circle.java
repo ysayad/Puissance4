@@ -9,12 +9,13 @@ public class Circle extends JPanel {
     private int colNum;
     private int rowNum;
 
+
     /**
      * Constructor for objects of class Circle
      * @param radius the radius of the circle
      */
     public Circle(int radius, Jeu jeu) {
-        this.setPreferredSize(new Dimension(620, 540));
+        this.setPreferredSize(new Dimension(620, 600));
         this.radius = radius;
         this.jeu = jeu;
         this.colNum = this.jeu.grille[0].length;
@@ -27,6 +28,17 @@ public class Circle extends JPanel {
 
     }
 
+    public void slide(int x){
+       Graphics brush = getGraphics();
+       super.paintComponent(brush);
+       brush.setColor(Color.DARK_GRAY);
+       brush.fillOval(x - this.getX(), 0, this.radius, this.radius);
+
+       System.out.println("test");
+    } 
+    
+    
+    
     public int  getcolonne(){
         return this.colonne;
 
@@ -52,10 +64,10 @@ public class Circle extends JPanel {
         }
 
         brush2D.setColor(CustomColor.DARK_GRAY);
-        RoundRectangle2D shadow = new RoundRectangle2D.Double(10, 10, 600, 520, 50, 50);
+        RoundRectangle2D shadow = new RoundRectangle2D.Double(10, 60, 600, 520, 50, 50);
         brush2D.fill(shadow);
         brush2D.setColor(CustomColor.LIGHT_GRAY);
-        RoundRectangle2D rect = new RoundRectangle2D.Double(0, 0, 600, 520, 50, 50);
+        RoundRectangle2D rect = new RoundRectangle2D.Double(0, 50, 600, 520, 50, 50);
         brush2D.draw(rect);
         brush2D.fill(rect);
         
@@ -80,9 +92,9 @@ public class Circle extends JPanel {
                         break;
 
                 }
-                brush.fillOval((c * 75) + 50, (r * 75) + 50, this.radius, this.radius);
+                brush.fillOval((c * 75) + 50, (r * 75) + 100, this.radius, this.radius);
                 brush.setColor(CustomColor.DARK_GRAY);
-                brush.drawOval((c * 75) + 50, (r * 75) + 50, this.radius, this.radius);
+                brush.drawOval((c * 75) + 50, (r * 75) + 100, this.radius, this.radius);
 
             }
 
