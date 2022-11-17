@@ -15,18 +15,25 @@ public class App {
         Jeu jeu = new Jeu(4);
         JPanel panneau = new JPanel();
         panneau.setLayout(gbl);
+        gbc.gridx = 2;
+        gbc.gridy = 3;
         panneau.add(jeu.getGridCircle(), gbc);
+        gbc.gridx = 7;
+        gbc.gridy = 3;
         panneau.add(jeu.getCurrentPlayer(), gbc);
-
+        gbc.gridx = 2;
+        gbc.gridy = 2;
+        panneau.add(jeu.getHoverBar(), gbc);
         window.add(panneau);
+        
 
         CircleListener listener = new CircleListener(jeu);
         jeu.getGridCircle().addMouseListener(listener);
+        jeu.getGridCircle().addMouseMotionListener(listener);
 
         window.setVisible(true);
-        Test t = new Test();
-
-        t.slide(jeu.getGridCircle());
+        
+        
 
     }
 

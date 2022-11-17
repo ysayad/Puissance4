@@ -10,6 +10,7 @@ public class Jeu {
     private int mode = 3;
     private int colNum = 7;
     private int rowNum = 6;
+    private HoverBar hoverBar = new HoverBar();
     
     
 
@@ -197,6 +198,10 @@ public class Jeu {
     public CurrentPlayer getCurrentPlayer() {
         return this.currentPlayer;
     
+    }
+
+    public HoverBar getHoverBar() {
+        return this.hoverBar;
     }
 
     public void removePlayerToken (int player) {
