@@ -34,15 +34,15 @@ public class CurrentPlayer extends JPanel{
                 break;
 
             case 1:
-                brush.setColor(CustomColor.RED);
-                break;
-
-            case 2:
                 brush.setColor(CustomColor.YELLOW);
                 break;
 
-            case 3:
+            case 2:
                 brush.setColor(CustomColor.GREEN);
+                break;
+
+            case 3:
+                brush.setColor(CustomColor.RED);
                 break;
 
         }
