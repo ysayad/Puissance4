@@ -13,7 +13,7 @@ public class CircleListener implements MouseListener{
         if (!this.jeu.verif(this.jeu.getPlayer(), this.jeu.getMode())){
     
             for (int j = 0 ; j<7 ;j+=1 ){
-                if (x>(j * 75) + 50 && x<((j+1) * 75)){
+                if (x>(j * 75) + 50 && x<((j+1) * 75 + 25)){
                     this.jeu.ajout(j);
 
                 }

@@ -6,7 +6,7 @@ public class CurrentPlayer extends JPanel{
     private int player;
 
     public CurrentPlayer () {
-        this.setPreferredSize(new Dimension(170, 220));
+        this.setPreferredSize(new Dimension(160, 210));
         this.player = 3;
         
     }
@@ -14,6 +14,12 @@ public class CurrentPlayer extends JPanel{
     @Override
     protected void paintComponent(Graphics g) {
         Graphics2D brush = (Graphics2D) g.create();
+
+        if (this.isOpaque()) {
+            // obligatoire : on repeint toute la surface avec la couleur de fond
+            brush.setColor(this.getBackground());
+            brush.fillRect(0, 0, this.getWidth(), this.getHeight());
+          }
 
         RoundRectangle2D shadow = new RoundRectangle2D.Double(7, 7, 150, 200, 50, 50);
         brush.setColor(CustomColor.DARK_GRAY);
