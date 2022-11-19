@@ -3,14 +3,14 @@ import java.util.*;
 public class Jeu {
     int[][] grille;
     private List<Integer> playerList = new LinkedList<>(Arrays.asList(1,2,3));
-    private int player = 3;
+    public int player = 3;
     private int playerRemaining = playerList.size();
     private Circle gridCircle;
     private CurrentPlayer currentPlayer = new CurrentPlayer();
     private int mode = 3;
     private int colNum = 7;
     private int rowNum = 6;
-    private HoverBar hoverBar = new HoverBar();
+    private HoverBar hoverBar = new HoverBar(this);
     
     
 

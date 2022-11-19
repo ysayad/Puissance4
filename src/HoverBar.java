@@ -2,16 +2,25 @@ import javax.swing.*;
 import java.awt.*;
 
 public class HoverBar extends JPanel {
-    
-    public HoverBar () {
+    private Jeu jeu;
+    public HoverBar (Jeu jeu) {
         this.setPreferredSize(new Dimension(600, 120));
-
+        this.jeu = jeu;
     }
+
 
     public void slide(int x){
         Graphics2D brush = (Graphics2D) getGraphics();
         super.paintComponent(brush);
-        brush.setColor(CustomColor.DARK_GRAY);
+        if(this.jeu.getPlayer() == 1){
+                    brush.setColor(CustomColor.YELLOW);
+        }
+        if(this.jeu.getPlayer() == 2){
+                    brush.setColor(CustomColor.GREEN);
+        }
+        if(this.jeu.getPlayer() == 3){
+                    brush.setColor(CustomColor.RED);
+        }
         brush.setStroke(new BasicStroke(10));
         if (x > 50 && x < 550) {
             brush.fillOval(x - 40, 20, 50, 50);
