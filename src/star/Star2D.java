@@ -60,7 +60,7 @@ public class Star2D implements Shape {
         this.outerRadius = outerRadius;
         this.branchesCount = branchesCount;
 
-        starShape = generateStar(x, y, innerRadius, outerRadius, branchesCount);
+        starShape = generateStar(x, y+2, innerRadius, outerRadius, branchesCount);
     }
 
     private static Shape generateStar(double x, double y,
