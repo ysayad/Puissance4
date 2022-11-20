@@ -14,6 +14,8 @@ public class Jeu {
     private int rowNum = 6;
     private boolean finished = false;
     private ArrayList scoreboard = new ArrayList();
+    private HoverBar hoverBar = new HoverBar(this);
+
     
 
     public Jeu(int mode) {
@@ -35,6 +37,10 @@ public class Jeu {
 
         this.gridCircle = new Circle(50, this);
 
+    }
+
+    public HoverBar getHoverBar() {
+        return this.hoverBar;
     }
 
     public void addToScoreboard(int val){

@@ -8,6 +8,7 @@ public class GamePanel extends JPanel{
         Jeu jeu = new Jeu(mode);
         CircleListener listener = new CircleListener(jeu, window); 
 
+        JPanel panneau = new JPanel();
 
         this.setLayout(gbl);
         gbc.gridy = 3;
@@ -16,9 +17,11 @@ public class GamePanel extends JPanel{
         gbc.gridy = 3;
         gbc.gridx = 7;
         this.add(jeu.getCurrentPlayer(), gbc);
-        
+        gbc.gridy = 2;
+        gbc.gridx = 5;
+        this.add(jeu.getHoverBar(), gbc);
         jeu.getGridCircle().addMouseListener(listener);
-
+        jeu.getGridCircle().addMouseMotionListener(listener);
     }
 
 }

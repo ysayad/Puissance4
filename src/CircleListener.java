@@ -1,7 +1,7 @@
 import java.awt.event.*;
 import java.util.*;
 import javax.swing.*;
-public class CircleListener implements MouseListener{
+public class CircleListener implements MouseListener, MouseMotionListener{
     private Jeu jeu;
     private EndDialog endDialog;
 
@@ -12,7 +12,7 @@ public class CircleListener implements MouseListener{
 
     }
 
-
+    @Override
     public void mouseClicked(MouseEvent e) {
         int x=e.getX();
         if (!this.jeu.finished()) {
@@ -68,15 +68,26 @@ public class CircleListener implements MouseListener{
 
             this.jeu.getGridCircle().repaint();
         }
+                                this.jeu.getHoverBar().slide(e.getX());
+
 
     }
-
+    @Override
     public void mouseEntered(MouseEvent e) {}
-
+    @Override
     public void mouseExited(MouseEvent e) {}
+    @Override
+    public void mousePressed(MouseEvent e) {
 
-    public void mousePressed(MouseEvent e) {}
+    }
+    @Override
+    public void mouseReleased(MouseEvent e) {
 
-    public void mouseReleased(MouseEvent e) {}
-    
+    }
+    @Override
+    public void mouseMoved(MouseEvent e) {
+        this.jeu.getHoverBar().slide(e.getX());
+    }
+    @Override
+    public void mouseDragged(MouseEvent e) {}
 }
