@@ -13,7 +13,7 @@ public class Jeu {
     private int colNum = 7;
     private int rowNum = 6;
     private boolean finished = false;
-    
+    private ArrayList scoreboard = new ArrayList();
     
 
     public Jeu(int mode) {
@@ -37,6 +37,12 @@ public class Jeu {
 
     }
 
+    public void addToScoreboard(int val){
+        this.scoreboard.add(Integer.toString(val));
+    }
+    public ArrayList getScoreboard(){
+        return this.scoreboard;
+    }
 
     public void repaint(){
         this.gridCircle.repaint();

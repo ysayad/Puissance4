@@ -7,7 +7,7 @@ public class CircleListener implements MouseListener{
 
     public CircleListener(Jeu jeu, JFrame window) {
         this.jeu = jeu;
-        this.endDialog = new EndDialog(window);
+        this.endDialog = new EndDialog(window,jeu);
     
 
     }
@@ -28,6 +28,7 @@ public class CircleListener implements MouseListener{
 
                 if (this.jeu.verif(this.jeu.getPlayer(), this.jeu.getMode())) {
                     System.out.println("Le joueur "+this.jeu.getPlayer()+" a gagné");
+                    this.jeu.addToScoreboard(this.jeu.getPlayer());
                     if (this.jeu.getPlayerRemaining() > 2) {
                         this.jeu.removePlayer();
                         this.jeu.removePlayerToken(this.jeu.getPlayer());
@@ -37,11 +38,15 @@ public class CircleListener implements MouseListener{
                             this.endDialog.setVisible(true);
                             this.jeu.setFinished();
                         } else if (this.jeu.verif(playerList.get(0), this.jeu.getMode())) {
+                            this.jeu.addToScoreboard(playerList.get(0));
                             System.out.println("Le joueur "+playerList.get(0)+" a gagné");
+                            this.endDialog.refresh();
                             this.endDialog.setVisible(true);
                             this.jeu.setFinished();
                         } else if (this.jeu.verif(playerList.get(1), this.jeu.getMode())) {
+                            this.jeu.addToScoreboard(playerList.get(1));
                             System.out.println("Le joueur "+playerList.get(1)+" a gagné");
+                            this.endDialog.refresh();
                             this.endDialog.setVisible(true);
                             this.jeu.setFinished();
                         }
