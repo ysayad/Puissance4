@@ -46,8 +46,9 @@ public class MenuListener implements ActionListener {
             JTextArea text = new JTextArea(10,40);
             StarRating star = new StarRating();
             star.setStar(3);
-            star.setForeground(new java.awt.Color(255, 0, 102));
+            star.setForeground(Color.RED);
             star.setBackground(Color.WHITE);
+            star.setPreferredSize(new Dimension(100,40));
             JButton valider = new JButton("Envoyer");
             valider.addActionListener(this);
             valider.setFocusPainted(false);
@@ -58,7 +59,7 @@ public class MenuListener implements ActionListener {
             text.setEditable(true);
             text.setLineWrap(true);
 
-            rules.setSize(500, 300);
+            rules.setSize(500, 325);
             rules.setLocationRelativeTo(null);
             FlowLayout gestionnaire = new FlowLayout(FlowLayout.CENTER,1,2);
 
