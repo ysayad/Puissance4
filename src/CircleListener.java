@@ -35,6 +35,7 @@ public class CircleListener implements MouseListener{
                         List<Integer> playerList = this.jeu.getPlayerList();
                         if (this.jeu.verif(playerList.get(0), this.jeu.getMode()) && this.jeu.verif(playerList.get(1), this.jeu.getMode())) {
                             System.out.println("Match nul");
+                            this.endDialog.refresh();
                             this.endDialog.setVisible(true);
                             this.jeu.setFinished();
                         } else if (this.jeu.verif(playerList.get(0), this.jeu.getMode())) {
@@ -53,6 +54,7 @@ public class CircleListener implements MouseListener{
                             
                     
                     } else if (this.jeu.getPlayerRemaining() == 2) {
+                        this.endDialog.refresh();
                         this.endDialog.setVisible(true);
                     }
                     

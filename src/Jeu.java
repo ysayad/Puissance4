@@ -39,9 +39,12 @@ public class Jeu {
 
     public void addToScoreboard(int val){
         this.scoreboard.add(Integer.toString(val));
+
     }
+    
     public ArrayList getScoreboard(){
         return this.scoreboard;
+        
     }
 
     public void repaint(){

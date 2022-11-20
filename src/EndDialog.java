@@ -1,6 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
-import java.util.*;
+
 
 
 public class EndDialog extends JDialog {
@@ -28,6 +28,9 @@ public class EndDialog extends JDialog {
         this.add(label);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        this.repaint();
+        this.revalidate();
+        
     }
 
 }
