@@ -10,7 +10,7 @@ public class Window extends JFrame {
     public Window() {
         this.setTitle("Puissance 4");
         this.setSize(1920, 1080);
-        this.setLocation(0, 0);
+        this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
         this.setLayout(cardLayout);

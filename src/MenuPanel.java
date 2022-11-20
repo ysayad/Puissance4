@@ -24,12 +24,14 @@ public class MenuPanel extends Box {
         JButton jouer = new JButton("Jouer");
         JButton jouer_multi= new JButton("Jouer à trois");
         JButton rules = new JButton("Règles");
+        JButton feedback = new JButton("Donnez votre avis !");
         JButton sortir = new JButton("Quitter");
         
 
         jouer.addActionListener(e); 
         jouer_multi.addActionListener(e); 
         rules.addActionListener(e); 
+        feedback.addActionListener(e); 
         sortir.addActionListener(e);
 
         Dimension taille = new Dimension(350,40);
@@ -37,21 +39,25 @@ public class MenuPanel extends Box {
         sortir.setFocusPainted(false);
         jouer_multi.setFocusPainted(false);
         rules.setFocusPainted(false);
+        feedback.setFocusPainted(false);
         jouer.setFocusPainted(false);
 
         jouer.setForeground(Color.WHITE);
         jouer_multi.setForeground(Color.WHITE);
         rules.setForeground(Color.WHITE); // Gestion front-end des boutons
+        feedback.setForeground(Color.WHITE);
         sortir.setForeground(Color.WHITE);
 
         jouer.setBackground(new Color(5, 40, 127));
         jouer_multi.setBackground(new Color(5, 40, 127));
         rules.setBackground(new Color(5, 40, 127));
+        feedback.setBackground(new Color(5, 40, 127));
         sortir.setBackground(new Color(5, 40, 127));
 
         jouer.setPreferredSize(taille);
         jouer_multi.setPreferredSize(taille);
         rules.setPreferredSize(taille);
+        feedback.setPreferredSize(taille);
         sortir.setPreferredSize(taille);
 
         
@@ -64,6 +70,8 @@ public class MenuPanel extends Box {
         menu.add(jouer_multi);
         menu.add(Box.createRigidArea(new Dimension(700, 10)));  
         menu.add(rules);
+        menu.add(Box.createRigidArea(new Dimension(700, 10)));  
+        menu.add(feedback);
         menu.add(Box.createRigidArea(new Dimension(700, 10)));
         menu.add(sortir);
 

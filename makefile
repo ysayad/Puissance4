@@ -5,7 +5,7 @@ BIN_DIR = bin
 SRC_DIR = src
 
 all: 
-	$(JAVA_COMPILER) -d $(BIN_DIR) $(SRC_DIR)/*.java
+	$(JAVA_COMPILER) -d $(BIN_DIR) $(SRC_DIR)/*.java src/star/*.java
 
 run: all
 	$(JAVA_RUN) -cp $(BIN_DIR) App

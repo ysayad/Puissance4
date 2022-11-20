@@ -1,9 +1,12 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import star.Star;
+import star.StarRating;
 
 public class MenuListener implements ActionListener {
     private JFrame window;
+    private JDialog rules;
 
     public MenuListener(JFrame window) {
         this.window = window;
@@ -20,7 +23,7 @@ public class MenuListener implements ActionListener {
             cardLayout.show(window.getContentPane(), "gamePanel3");
         }
         if (e.getActionCommand() == "Règles") {
-            JDialog rules = new JDialog(window, "Les règles");
+            rules = new JDialog(window, "Les règles");
             JPanel panneau = new JPanel();
             JLabel etiquette = new JLabel("Les règles :");
             JTextArea text = new JTextArea("Placez chacun cotre tour un pion, celui qui en aligne 4 ou 3 selon le mode choisi gagne.");
@@ -37,8 +40,45 @@ public class MenuListener implements ActionListener {
             rules.setVisible(true);
             rules.setResizable(false);
         }
+        if (e.getActionCommand() == "Donnez votre avis !") {
+            rules = new JDialog(window, "Donnez votre avis");
+            JPanel panneau = new JPanel();
+            JLabel etiquette = new JLabel("Qu'avez-vous penser du jeu ? Que pouvons-nous améliorer ?");
+            JTextArea text = new JTextArea(10,40);
+            StarRating star = new StarRating();
+            star.setStar(3);
+            star.setForeground(new java.awt.Color(255, 0, 102));
+            star.setBackground(Color.WHITE);
+            JButton valider = new JButton("Envoyer");
+            valider.addActionListener(this);
+            valider.setFocusPainted(false);
+            valider.setForeground(Color.WHITE);
+            valider.setBackground(new Color(5, 40, 127));
+            valider.setPreferredSize(new Dimension(350,40));
+
+            text.setEditable(true);
+            text.setLineWrap(true);
+
+            rules.setSize(500, 300);
+            rules.setLocationRelativeTo(null);
+            FlowLayout gestionnaire = new FlowLayout(FlowLayout.CENTER,1,2);
+
+            panneau.setLayout(gestionnaire);
+            panneau.add(etiquette);
+            panneau.add(text);
+            panneau.add(star);
+            panneau.add(Box.createRigidArea(new Dimension(700, 10)));  
+            panneau.add(valider);
+            rules.add(panneau);
+            rules.setVisible(true);
+            rules.setResizable(false);
+        }
         if (e.getActionCommand() == "Quitter") {
             this.window.dispose();
         }
+        if (e.getActionCommand() == "Envoyer") {
+            rules.dispose();
+        }
+
     }
 }
