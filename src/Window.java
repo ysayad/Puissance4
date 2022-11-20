@@ -1,0 +1,23 @@
+import javax.swing.*;
+import java.awt.*;
+
+public class Window extends JFrame {
+    CardLayout cardLayout = new CardLayout();
+    GamePanel gamePanel4 = new GamePanel(4);
+    GamePanel gamePanel3 = new GamePanel(3);
+    MenuPanel menuPanel = new MenuPanel(this);
+
+    public Window() {
+        this.setTitle("Puissance 4");
+        this.setSize(1920, 1080);
+        this.setLocation(0, 0);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setVisible(true);
+        this.setLayout(cardLayout);
+        this.add(menuPanel, "menuPanel");
+        this.add(gamePanel4, "gamePanel4");
+        this.add(gamePanel3, "gamePanel3");
+        
+
+    }
+}

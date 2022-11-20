@@ -3,11 +3,12 @@ import javax.swing.*;
 import java.awt.geom.RoundRectangle2D;
 
 public class CurrentPlayer extends JPanel{
-    private int player;
+    
+    private Jeu jeu;
 
-    public CurrentPlayer () {
+    public CurrentPlayer (Jeu jeu) {
         this.setPreferredSize(new Dimension(160, 210));
-        this.player = 3;
+        this.jeu = jeu;
         
     }
     
@@ -32,23 +33,24 @@ public class CurrentPlayer extends JPanel{
 
         brush.setColor(CustomColor.DARK_GRAY);
         brush.setFont(new Font("Arial", Font.BOLD, 20));
-        brush.drawString("Joueur " + this.player, 30, 50);
+        brush.drawString("Joueur " + this.jeu.getNextPlayer(), 30, 50);
+        
 
-        switch (this.player) {
+        switch (this.jeu.getNextPlayer()) {
             case 0:
                 brush.setColor(CustomColor.WHITE);
                 break;
 
             case 1:
-                brush.setColor(CustomColor.YELLOW);
+                brush.setColor(CustomColor.RED);
                 break;
 
             case 2:
-                brush.setColor(CustomColor.GREEN);
+                brush.setColor(CustomColor.YELLOW);
                 break;
 
             case 3:
-                brush.setColor(CustomColor.RED);
+                brush.setColor(CustomColor.GREEN);
                 break;
 
         }
@@ -58,9 +60,9 @@ public class CurrentPlayer extends JPanel{
 
     }
 
-    public void setPlayer(int player) {
-        this.player = player;
+    // public void setPlayer(int player) {
+    //     this.player = player;
 
-    }
+    // }
 
 }

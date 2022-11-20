@@ -3,19 +3,28 @@ import java.util.*;
 public class Jeu {
     int[][] grille;
     private List<Integer> playerList = new LinkedList<>(Arrays.asList(1,2,3));
+    private List<Integer> nextPlayerList = new LinkedList<>(Arrays.asList(2,3,1));
     private int player = 3;
+    private int nextPlayer = 1;
     private int playerRemaining = playerList.size();
     private Circle gridCircle;
-    private CurrentPlayer currentPlayer = new CurrentPlayer();
+    private CurrentPlayer currentPlayer = new CurrentPlayer(this);
     private int mode = 3;
     private int colNum = 7;
     private int rowNum = 6;
+    private boolean finished = false;
     
     
 
     public Jeu(int mode) {
         this.grille = new int[rowNum][colNum];
         this.mode = mode;
+
+        if (this.mode == 4) {
+            this.playerList = new LinkedList<>(Arrays.asList(1,2));
+            this.nextPlayerList = new LinkedList<>(Arrays.asList(2,1));
+            this.playerRemaining = playerList.size();
+        }
 
         for (int i = 0 ; i < rowNum ; i++ ) {
             for (int j = 0 ; j < colNum ; j++){
@@ -48,17 +57,6 @@ public class Jeu {
 
         }
 
-    }
-
-
-    public void affiche_matrice(){
-        for (int i = 0 ; i < 6 ; i++) {
-            for (int j = 0 ; j < 7 ; j++){
-                System.out.print(this.grille[i][j]);
-            }
-            System.out.println("");
-
-        }
     }
 
 
@@ -150,13 +148,13 @@ public class Jeu {
         int index = this.playerList.indexOf(this.player);
         if (index == this.playerList.size() - 1) {
             this.player = this.playerList.get(0);
+            this.nextPlayer = this.nextPlayerList.get(0);
             
         } else {
             this.player = this.playerList.get(index + 1);
+            this.nextPlayer = this.nextPlayerList.get(index + 1);
 
         }
-
-        this.currentPlayer.setPlayer(this.player);
         this.currentPlayer.repaint();
 
     }
@@ -164,6 +162,8 @@ public class Jeu {
     public void removePlayer () {
         this.playerList.remove(this.player-1);
         this.playerRemaining--;
+        this.nextPlayerList.remove(this.nextPlayerList.indexOf(this.player));
+        System.out.println(nextPlayerList);
 
     }
 
@@ -173,8 +173,28 @@ public class Jeu {
     
     }
 
+    public int getNextPlayer() {
+        return nextPlayer;
+    
+    }
+
+    public List<Integer> getPlayerList () {
+        return this.playerList;
+    
+    }
+
     public int getPlayerRemaining() {
         return playerRemaining;
+    
+    }
+
+    public boolean finished() {
+        return this.finished;
+    
+    }
+
+    public void setFinished() {
+        this.finished = !this.finished;
     
     }
 
