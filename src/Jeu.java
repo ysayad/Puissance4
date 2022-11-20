@@ -145,6 +145,12 @@ public class Jeu {
 
 
     public void switchPlayer () {
+        if (this.playerList.equals(this.nextPlayerList)) {
+            int temp = this.nextPlayerList.get(0);
+            this.nextPlayerList.set(0, this.nextPlayerList.get(1));
+            this.nextPlayerList.set(1, temp);
+        }
+
         int index = this.playerList.indexOf(this.player);
         if (index == this.playerList.size() - 1) {
             this.player = this.playerList.get(0);
@@ -159,6 +165,7 @@ public class Jeu {
 
     }
 
+    
     public void removePlayer () {
         this.playerList.remove(this.player-1);
         this.playerRemaining--;
@@ -182,6 +189,12 @@ public class Jeu {
         return this.playerList;
     
     }
+
+    public List<Integer> getNextPlayerList () {
+        return this.nextPlayerList;
+    
+    }
+
 
     public int getPlayerRemaining() {
         return playerRemaining;
