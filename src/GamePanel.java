@@ -2,11 +2,11 @@ import javax.swing.*;
 import java.awt.*;;
 
 public class GamePanel extends JPanel{
-    public GamePanel(int mode){
+    public GamePanel(int mode, JFrame window){
         GridBagLayout gbl = new GridBagLayout();
         GridBagConstraints gbc = new GridBagConstraints();
         Jeu jeu = new Jeu(mode);
-        CircleListener listener = new CircleListener(jeu); 
+        CircleListener listener = new CircleListener(jeu, window); 
 
 
         this.setLayout(gbl);

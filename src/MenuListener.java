@@ -1,7 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import star.Star;
 import star.StarRating;
 
 public class MenuListener implements ActionListener {

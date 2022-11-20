@@ -9,7 +9,7 @@ public class MenuPanel extends Box {
         JPanel menu = new MenuDraw();
         MenuListener e = new MenuListener(window);
         JPanel logo = new JPanel();
-        JLabel image = new JLabel(new ImageIcon("/res/logo2.png")); // Image jeu squelette
+        JLabel image = new JLabel(new ImageIcon("./res/logo2.png")); // Image jeu squelette
 
         menu.setOpaque(false);
         logo.setLayout(new BorderLayout());
@@ -64,7 +64,7 @@ public class MenuPanel extends Box {
 
         menu.add(Box.createRigidArea(new Dimension(700, 70)));
         menu.add(logo);
-        menu.add(Box.createRigidArea(new Dimension(700, 120)));
+        menu.add(Box.createRigidArea(new Dimension(700, 80)));
         menu.add(jouer);
         menu.add(Box.createRigidArea(new Dimension(700, 10))); // Implementation des éléments dans la fenetre avec boxlayout
         menu.add(jouer_multi);

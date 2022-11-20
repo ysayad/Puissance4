@@ -40,7 +40,6 @@ public class StarRating extends javax.swing.JPanel {
         setForeground(new Color(238, 236, 0));
     }
 
-    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 

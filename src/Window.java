@@ -3,8 +3,8 @@ import java.awt.*;
 
 public class Window extends JFrame {
     CardLayout cardLayout = new CardLayout();
-    GamePanel gamePanel4 = new GamePanel(4);
-    GamePanel gamePanel3 = new GamePanel(3);
+    GamePanel gamePanel4 = new GamePanel(4, this);
+    GamePanel gamePanel3 = new GamePanel(3, this);
     MenuPanel menuPanel = new MenuPanel(this);
 
     public Window() {
@@ -17,6 +17,7 @@ public class Window extends JFrame {
         this.add(menuPanel, "menuPanel");
         this.add(gamePanel4, "gamePanel4");
         this.add(gamePanel3, "gamePanel3");
+        this.setResizable(false);
         
 
     }
