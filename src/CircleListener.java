@@ -14,6 +14,17 @@ public class CircleListener implements MouseListener, MouseMotionListener{
 
     @Override
     public void mouseClicked(MouseEvent e) {
+        
+                                this.jeu.getHoverBar().slide(e.getX());
+
+
+    }
+    @Override
+    public void mouseEntered(MouseEvent e) {}
+    @Override
+    public void mouseExited(MouseEvent e) {}
+    @Override
+    public void mousePressed(MouseEvent e) {
         int x=e.getX();
         if (!this.jeu.finished()) {
             if (!this.jeu.verif(this.jeu.getPlayer(), this.jeu.getMode())){
@@ -68,16 +79,6 @@ public class CircleListener implements MouseListener, MouseMotionListener{
 
             this.jeu.getGridCircle().repaint();
         }
-                                this.jeu.getHoverBar().slide(e.getX());
-
-
-    }
-    @Override
-    public void mouseEntered(MouseEvent e) {}
-    @Override
-    public void mouseExited(MouseEvent e) {}
-    @Override
-    public void mousePressed(MouseEvent e) {
 
     }
     @Override

@@ -25,17 +25,22 @@ public class EndDialog extends JDialog {
         System.out.println("test"+this.jeu.getScoreboard());
         JLabel label = new JLabel("Fin de la partie");
         JLabel score = new JLabel("Scoreboard : ");
-        
+        this.setLayout(new GridLayout(8,0));
         JLabel gagnant1 = new JLabel("Gagnant 1 : Joueur "+ this.jeu.getScoreboard().get(0));
         this.add(label);
         this.add(score);
         this.add(gagnant1);
-        if(this.jeu.getMode()!=4){
+        // if(this.jeu.getMode()==3){
+            try{
            JLabel gagnant2 = new JLabel("Gagnant 2 : Joueur "+ this.jeu.getScoreboard().get(1));
                    this.add(gagnant2);
                    gagnant2.setHorizontalAlignment(JLabel.CENTER);
+            }catch (IndexOutOfBoundsException e){
+                System.out.println("erreur à corriger");
+            }   
+                
 
-        }
+        // }
 
         JButton replay = new JButton("Rejouer");
         JButton quit = new JButton("Quitter");
@@ -52,7 +57,7 @@ public class EndDialog extends JDialog {
         this.add(replay);
         this.add(quit);
 
-        this.setLayout(new GridLayout(5,0));
+        
         label.setHorizontalAlignment(JLabel.CENTER);
         score.setHorizontalAlignment(JLabel.CENTER);
         gagnant1.setHorizontalAlignment(JLabel.CENTER);
