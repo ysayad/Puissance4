@@ -6,9 +6,9 @@ import java.awt.event.*;
 public class EndDialogListener implements ActionListener {
     private Jeu jeu;
     private JFrame window;
-    private JDialog dial;
+    private EndDialog dial;
 
-    public EndDialogListener(Jeu jeu,JFrame window,JDialog dial) {
+    public EndDialogListener(Jeu jeu,JFrame window,EndDialog dial) {
         this.jeu = jeu;
         this.window = window;
         this.dial = dial;
@@ -19,13 +19,15 @@ public class EndDialogListener implements ActionListener {
 
 
         if (evt.getActionCommand() == "Rejouer") {
+                this.jeu.reset();
                 this.dial.dispose();
-                CardLayout cardLayout = (CardLayout) window.getContentPane().getLayout();
-                cardLayout.show(window.getContentPane(),"menuPanel");
-            }
+                
+        }
+        
         if (evt.getActionCommand() == "Quitter") {
             this.dial.dispose();
-            this.window.dispose();
+            CardLayout cardLayout = (CardLayout) window.getContentPane().getLayout();
+            cardLayout.show(window.getContentPane(),"menuPanel");
         }
 
             

@@ -38,6 +38,7 @@ public class CircleListener implements MouseListener, MouseMotionListener{
                 }
 
                 if (this.jeu.verif(this.jeu.getPlayer(), this.jeu.getMode())) {
+                    this.endDialog.reset();
                     System.out.println("Le joueur "+this.jeu.getPlayer()+" a gagné");
                     this.jeu.addToScoreboard(this.jeu.getPlayer());
                     if (this.jeu.getPlayerRemaining() > 2) {

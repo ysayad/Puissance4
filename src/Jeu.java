@@ -10,10 +10,11 @@ public class Jeu {
     private Circle gridCircle;
     private CurrentPlayer currentPlayer = new CurrentPlayer(this);
     private int mode = 3;
+    private int initialMode;
     private int colNum = 7;
     private int rowNum = 6;
     private boolean finished = false;
-    private ArrayList scoreboard = new ArrayList();
+    private ArrayList scoreboard = new ArrayList<>();
     private HoverBar hoverBar = new HoverBar(this);
 
     
@@ -21,6 +22,7 @@ public class Jeu {
     public Jeu(int mode) {
         this.grille = new int[rowNum][colNum];
         this.mode = mode;
+        this.initialMode = mode;
 
         if (this.mode == 4) {
             this.playerList = new LinkedList<>(Arrays.asList(1,2));
@@ -275,6 +277,34 @@ public class Jeu {
             }
 
         }
+
+    }
+
+    public void reset() {
+        for (int i = 0 ; i < rowNum ; i++ ) {
+            for (int j = 0 ; j < colNum ; j++){
+                this.grille[i][j] = 0;
+            }
+
+        }
+        this.mode = this.initialMode;
+        if (this.mode == 4) {
+            this.playerList = new LinkedList<>(Arrays.asList(1,2));
+            this.nextPlayerList = new LinkedList<>(Arrays.asList(2,1));
+            this.player = this.playerList.get(1);
+            this.nextPlayer = this.nextPlayerList.get(1);
+            
+        } else {
+            this.playerList = new LinkedList<>(Arrays.asList(1,2,3));
+            this.nextPlayerList = new LinkedList<>(Arrays.asList(2,3,1));
+            this.player = this.playerList.get(2);
+            this.nextPlayer = this.nextPlayerList.get(2);
+            
+        }
+        this.gridCircle.repaint();
+        this.playerRemaining = this.playerList.size();
+        this.finished = false;
+        this.scoreboard = new ArrayList<>();
 
     }
 

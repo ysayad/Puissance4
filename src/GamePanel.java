@@ -8,8 +8,6 @@ public class GamePanel extends JPanel{
         Jeu jeu = new Jeu(mode);
         CircleListener listener = new CircleListener(jeu, window); 
 
-        JPanel panneau = new JPanel();
-
         this.setLayout(gbl);
         gbc.gridy = 3;
         gbc.gridx = 5;
