@@ -26,7 +26,7 @@ public class MenuPanel extends Box {
         JPanel logo = new JPanel();
         JLabel image = new JLabel("Puissance 4");
         try {
-            BufferedImage icon = ImageIO.read(Objects.requireNonNull(getClass().getResource("./res/logo2.png")));
+            BufferedImage icon = ImageIO.read(Objects.requireNonNull(getClass().getResource("/res/logo2.png")));
             image = new JLabel(new ImageIcon(icon));
         } catch (Exception ex) {
             System.out.println("Image not found");
