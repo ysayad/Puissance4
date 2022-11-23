@@ -15,3 +15,6 @@ clean:
 
 doc:
 	javadoc -d doc $(SRC_DIR)/*.java
+
+jar: all
+	cd bin && jar cvfm P4.jar ../META-INF/MANIFEST.MF * ../res/

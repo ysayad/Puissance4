@@ -1,27 +1,49 @@
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
 import star.StarRating;
 
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Objects;
+
+/**
+ *MenuListener is the class that handles action on the menu
+ * @author Kamil Mardaci
+ * @author Yannis Bouarroudj
+ * @author Etann De Sousa Alves
+ * @author Youcef Sayad
+ * @version 1.0
+ */
 public class MenuListener implements ActionListener {
-    private JFrame window;
+    private final JFrame window;
     private JDialog rules;
 
+    /**
+     *
+     * @param window the frame
+     */
     public MenuListener(JFrame window) {
         this.window = window;
     }
 
-
+    /**
+     *
+     * @param e the event on the component
+     */
     public void actionPerformed(ActionEvent e) {
-        if (e.getActionCommand() == "Jouer") {
+        if (Objects.equals(e.getActionCommand(), "Jouer")) {
             CardLayout cardLayout = (CardLayout) window.getContentPane().getLayout();
             cardLayout.show(window.getContentPane(), "gamePanel4");
+
         }
-        if (e.getActionCommand() == "Jouer à trois") {
+
+        if (Objects.equals(e.getActionCommand(), "Jouer à trois")) {
             CardLayout cardLayout = (CardLayout) window.getContentPane().getLayout();
             cardLayout.show(window.getContentPane(), "gamePanel3");
+
         }
-        if (e.getActionCommand() == "Règles") {
+
+        if (Objects.equals(e.getActionCommand(), "Règles")) {
             rules = new JDialog(window, "Les règles");
             JPanel panneau = new JPanel();
             JLabel etiquette = new JLabel("Les règles :");
@@ -41,8 +63,10 @@ public class MenuListener implements ActionListener {
             rules.add(panneau);
             rules.setVisible(true);
             rules.setResizable(false);
+
         }
-        if (e.getActionCommand() == "Donnez votre avis !") {
+
+        if (Objects.equals(e.getActionCommand(), "Donnez votre avis !")) {
             rules = new JDialog(window, "Donnez votre avis");
             JPanel panneau = new JPanel();
             JLabel etiquette = new JLabel("Qu'avez-vous penser du jeu ? Que pouvons-nous améliorer ?");
@@ -75,13 +99,19 @@ public class MenuListener implements ActionListener {
             rules.add(panneau);
             rules.setVisible(true);
             rules.setResizable(false);
+
         }
-        if (e.getActionCommand() == "Quitter") {
-            this.window.dispose();
+
+        if (Objects.equals(e.getActionCommand(), "Quitter")) {
+            System.exit(0);
+
         }
-        if (e.getActionCommand() == "Envoyer") {
+
+        if (Objects.equals(e.getActionCommand(), "Envoyer")) {
             rules.dispose();
+
         }
 
     }
+
 }

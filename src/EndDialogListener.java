@@ -1,51 +1,56 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Objects;
 
-
+/**
+ *EndDialogListener is the class that handles the actions on the end dialog box
+ * @author Kamil Mardaci
+ * @author Yannis Bouarroudj
+ * @author Etann De Sousa Alves
+ * @author Youcef Sayad
+ * @version 1.0
+ */
 public class EndDialogListener implements ActionListener {
-    private Jeu jeu;
-    private JFrame window;
-    private EndDialog dial;
+    private final Jeu jeu;
+    private final JFrame window;
+    private final EndDialog dial;
 
+    /**
+     * Constructor of the EndDialogListener
+     * @param jeu the game
+     * @param window the frame
+     * @param dial the end dialog box
+     */
     public EndDialogListener(Jeu jeu,JFrame window,EndDialog dial) {
         this.jeu = jeu;
         this.window = window;
         this.dial = dial;
+
     }
 
 
     public void actionPerformed(ActionEvent evt) {
-
-
-        if (evt.getActionCommand() == "Rejouer") {
-                this.jeu.reset();
-                this.dial.dispose();
+        if (Objects.equals(evt.getActionCommand(), "Rejouer")) {
+            this.jeu.reset();
+            this.dial.dispose();
                 
         }
         
-        if (evt.getActionCommand() == "Quitter") {
+        if (Objects.equals(evt.getActionCommand(), "Retour au menu")) {
+            this.jeu.reset();
             this.dial.dispose();
             CardLayout cardLayout = (CardLayout) window.getContentPane().getLayout();
             cardLayout.show(window.getContentPane(),"menuPanel");
+
         }
 
-            
-            // String test = this.window.getContentPane().getName();       
-            // if (test == "gamePanel3"){
-            //     GamePanel gamePanel3 = new GamePanel(3, this.window);
-            //     this.window.add(gamePanel3,"gamePanel3");
-            //     CardLayout cardLayout = (CardLayout) window.getContentPane().getLayout();
-            //     cardLayout.show(window.getContentPane(), "gamePanel3");
-
-            // }else {
-            //     GamePanel gamePanel4 = new GamePanel(4, this.window);
-            //     this.window.add(gamePanel4,"gamePanel4");
-            //     CardLayout cardLayout = (CardLayout) window.getContentPane().getLayout();
-            // cardLayout.show(window.getContentPane(), "gamePanel4");
-            // }
+        if (Objects.equals(evt.getActionCommand(), "Quitter")) {
+            System.exit(0);
         }
 
     }
+
+}
 
 

@@ -1,12 +1,23 @@
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ *Window is the class that creates the main window
+ * @author Kamil Mardaci
+ * @author Yannis Bouarroudj
+ * @author Etann De Sousa Alves
+ * @author Youcef Sayad
+ * @version 1.0
+ */
 public class Window extends JFrame {
-    CardLayout cardLayout = new CardLayout();
-    GamePanel gamePanel4 = new GamePanel(4, this);
-    GamePanel gamePanel3 = new GamePanel(3, this);
-    MenuPanel menuPanel = new MenuPanel(this);
+    private final CardLayout cardLayout = new CardLayout();
+    private final GamePanel gamePanel4 = new GamePanel(4, this);
+    private final GamePanel gamePanel3 = new GamePanel(3, this);
+    private final MenuPanel menuPanel = new MenuPanel(this);
 
+    /**
+     * Create the window
+     */
     public Window() {
         this.setTitle("Puissance 4");
         this.setSize(1920, 1080);

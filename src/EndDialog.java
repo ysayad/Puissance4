@@ -1,16 +1,30 @@
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ *EndDialog is a class that creates a dialog box when the game is over
+ * @author Kamil Mardaci
+ * @author Yannis Bouarroudj
+ * @author Etann De Sousa Alves
+ * @author Youcef Sayad
+ * @version 1.0
+ */
 public class EndDialog extends JDialog {
-    private Jeu jeu;
-    private JFrame window;
-    private JLabel label = new JLabel("Fin de la partie");
-    private JLabel score = new JLabel("Scoreboard : ");
+    private final Jeu jeu;
+    private final JFrame window;
+    private final JLabel label = new JLabel("Fin de la partie");
+    private final JLabel score = new JLabel("Scoreboard : ");
     private JLabel gagnant1 = new JLabel("Joueur 1 : ");
     private JLabel gagnant2 = new JLabel("Joueur 2 : ");
-    private JButton replay = new JButton("Rejouer");
-    private JButton quit = new JButton("Quitter");
-    
+    private final JButton replay = new JButton("Rejouer");
+    private final JButton quit = new JButton("Quitter");
+    private final JButton backToMenu = new JButton("Retour au menu");
+
+    /**
+     * Constructeur de la classe EndDialog
+     * @param window the frame
+     * @param jeu the game
+     */
     public EndDialog(JFrame window,Jeu jeu){
         //super(window, "Fin de partie");
         this.jeu = jeu;
@@ -29,22 +43,30 @@ public class EndDialog extends JDialog {
         this.add(gagnant2);
         
         this.add(replay);
+        this.add(backToMenu);
         this.add(quit);
 
         this.replay.addActionListener(dialListener);
+        this.backToMenu.addActionListener(dialListener);
         this.quit.addActionListener(dialListener);
         this.replay.setFocusPainted(false);
+        this.backToMenu.setFocusPainted(false);
         this.quit.setFocusPainted(false);
         this.replay.setForeground(Color.WHITE);
+        this.backToMenu.setForeground(Color.WHITE);
         this.quit.setForeground(Color.WHITE);
-        this.replay.setBackground(new Color(5, 40, 127));
-        this.quit.setBackground(new Color(5, 40, 127));
+        this.replay.setBackground(CustomColor.BLUE);
+        this.backToMenu.setBackground(CustomColor.BLUE);
+        this.quit.setBackground(CustomColor.BLUE);
         
         this.label.setHorizontalAlignment(JLabel.CENTER);
         this.score.setHorizontalAlignment(JLabel.CENTER);
                 
     }
 
+    /**
+     * This method is called to update the value of the scoreboard
+     */
     public void refresh(){
         
         this.gagnant1 = new JLabel("Gagnant 1 : Joueur "+ this.jeu.getScoreboard().get(0));
@@ -60,6 +82,7 @@ public class EndDialog extends JDialog {
         }   
             
         this.add(replay);
+        this.add(backToMenu);
         this.add(quit);
 
         this.repaint();
@@ -67,12 +90,17 @@ public class EndDialog extends JDialog {
         
     }
 
+    /**
+     * This method is called to reset the dialog box
+     */
     public void reset() {
         this.remove(gagnant1);
         this.remove(gagnant2);
         this.remove(replay);
+        this.remove(backToMenu);
         this.remove(quit);
         this.repaint();
+
     }
 
 }

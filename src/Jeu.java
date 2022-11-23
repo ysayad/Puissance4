@@ -1,24 +1,35 @@
 import java.util.*;
 
+/**
+ *Jeu is the class that contains methods for the game
+ * @author Kamil Mardaci
+ * @author Yannis Bouarroudj
+ * @author Etann De Sousa Alves
+ * @author Youcef Sayad
+ * @version 1.0
+ */
 public class Jeu {
-    int[][] grille;
+    private final int[][] grille;
     private List<Integer> playerList = new LinkedList<>(Arrays.asList(1,2,3));
     private List<Integer> nextPlayerList = new LinkedList<>(Arrays.asList(2,3,1));
     private int player = 3;
     private int nextPlayer = 1;
     private int playerRemaining = playerList.size();
-    private Circle gridCircle;
-    private CurrentPlayer currentPlayer = new CurrentPlayer(this);
-    private int mode = 3;
-    private int initialMode;
-    private int colNum = 7;
-    private int rowNum = 6;
+    private final Circle gridCircle;
+    private final CurrentPlayer currentPlayer = new CurrentPlayer(this);
+    private int mode;
+    private final int initialMode;
+    private final int colNum = 7;
+    private final int rowNum = 6;
     private boolean finished = false;
-    private ArrayList scoreboard = new ArrayList<>();
-    private HoverBar hoverBar = new HoverBar(this);
+    private ArrayList<Object> scoreboard = new ArrayList<>();
+    private final HoverBar hoverBar = new HoverBar(this);
 
-    
 
+    /**
+     * Constructor of the game
+     * @param mode the game mode
+     */
     public Jeu(int mode) {
         this.grille = new int[rowNum][colNum];
         this.mode = mode;
@@ -41,26 +52,37 @@ public class Jeu {
 
     }
 
+    /**
+     *
+     * @return hoverBar
+     */
     public HoverBar getHoverBar() {
         return this.hoverBar;
     }
 
+    /**
+     *
+     * @param val takes a value and add it to the scoreboard
+     */
     public void addToScoreboard(int val){
         this.scoreboard.add(Integer.toString(val));
 
     }
-    
-    public ArrayList getScoreboard(){
+
+    /**
+     *
+     * @return scoreboard
+     */
+    public ArrayList<Object> getScoreboard(){
         return this.scoreboard;
         
     }
 
-    public void repaint(){
-        this.gridCircle.repaint();
 
-    }
-
-
+    /**
+     *
+     * @param num_colonne add a token to the position of num_colonne if possible
+     */
     public void ajout(int num_colonne) {
         if (this.grille[0][num_colonne] == 0) {
             this.switchPlayer();
@@ -76,7 +98,12 @@ public class Jeu {
 
     }
 
-
+    /**
+     * Method that verify if n token are connected for the player
+     * @param player do the win verification for this player
+     * @param mode do the verification according to the mode
+     * @return true if won, false if lost
+     */
     public boolean verif (int player, int mode){
         for (int row = 0; row < rowNum; row++) {
             for (int col = 0; col < colNum; col++) {
@@ -161,6 +188,9 @@ public class Jeu {
     }
 
 
+    /**
+     * Method that switch the player to the next
+     */
     public void switchPlayer () {
         if (this.playerList.equals(this.nextPlayerList)) {
             int temp = this.nextPlayerList.get(0);
@@ -182,7 +212,9 @@ public class Jeu {
 
     }
 
-    
+    /**
+     * Method that remove a player from the list
+     */
     public void removePlayer () {
         this.playerList.remove(this.player-1);
         this.playerRemaining--;
@@ -191,64 +223,109 @@ public class Jeu {
 
     }
 
-
+    /**
+     *
+     * @return the player
+     */
     public int getPlayer() {
-        return player;
+        return this.player;
     
     }
 
+    /**
+     *
+     * @return the next player
+     */
     public int getNextPlayer() {
-        return nextPlayer;
+        return this.nextPlayer;
     
     }
 
+    /**
+     *
+     * @return the player list
+     */
     public List<Integer> getPlayerList () {
         return this.playerList;
     
     }
 
-    public List<Integer> getNextPlayerList () {
-        return this.nextPlayerList;
-    
-    }
 
-
+    /**
+     *
+     * @return the number of remaining player
+     */
     public int getPlayerRemaining() {
-        return playerRemaining;
+        return this.playerRemaining;
     
     }
 
+    /**
+     *
+     * @return if the game is finished
+     */
     public boolean finished() {
         return this.finished;
     
     }
 
+    /**
+     * Set if the game is finished
+     */
     public void setFinished() {
         this.finished = !this.finished;
     
     }
 
-
+    /**
+     *
+     * @return the game mode
+     */
     public int getMode() {
-        return mode;
+        return this.mode;
     
     }
 
+    /**
+     *
+     * @param n set the mode to this value
+     */
     public void setMode (int n) {
         this.mode = n;
     
     }
 
+    /**
+     *
+     * @return the board
+     */
     public Circle getGridCircle() {
         return this.gridCircle;
     
     }
 
+    /**
+     *
+     * @return the grid
+     */
+    public int[][] getGrille () {
+        return this.grille;
+
+    }
+
+    /**
+     *
+     * @return the current player
+     */
     public CurrentPlayer getCurrentPlayer() {
         return this.currentPlayer;
     
     }
 
+    /**
+     *
+     * @param player remove the player token from the grid
+     */
     public void removePlayerToken (int player) {
         int emptySpace = 0;
 
@@ -280,6 +357,9 @@ public class Jeu {
 
     }
 
+    /**
+     * Reset the game to the initials value
+     */
     public void reset() {
         for (int i = 0 ; i < rowNum ; i++ ) {
             for (int j = 0 ; j < colNum ; j++){

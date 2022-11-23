@@ -1,15 +1,38 @@
-import java.awt.*;
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.util.Objects;
 
+/**
+ *MenuPanel is the class that creates the menu panel
+ * @author Kamil Mardaci
+ * @author Yannis Bouarroudj
+ * @author Etann De Sousa Alves
+ * @author Youcef Sayad
+ * @version 1.0
+ */
 public class MenuPanel extends Box {
 
+    /**
+     *
+     * @param window the frame
+     */
     public MenuPanel (JFrame window) {
         super(BoxLayout.Y_AXIS);
 
         JPanel menu = new MenuDraw();
         MenuListener e = new MenuListener(window);
         JPanel logo = new JPanel();
-        JLabel image = new JLabel(new ImageIcon("./res/logo2.png")); // Image jeu squelette
+        JLabel image = new JLabel("Puissance 4");
+        try {
+            BufferedImage icon = ImageIO.read(Objects.requireNonNull(getClass().getResource("./res/logo2.png")));
+            image = new JLabel(new ImageIcon(icon));
+        } catch (Exception ex) {
+            System.out.println("Image not found");
+
+        }
+
 
         menu.setOpaque(false);
         logo.setLayout(new BorderLayout());
@@ -26,7 +49,6 @@ public class MenuPanel extends Box {
         JButton rules = new JButton("Règles");
         JButton feedback = new JButton("Donnez votre avis !");
         JButton sortir = new JButton("Quitter");
-        
 
         jouer.addActionListener(e); 
         jouer_multi.addActionListener(e); 
@@ -44,15 +66,15 @@ public class MenuPanel extends Box {
 
         jouer.setForeground(Color.WHITE);
         jouer_multi.setForeground(Color.WHITE);
-        rules.setForeground(Color.WHITE); // Gestion front-end des boutons
+        rules.setForeground(Color.WHITE);
         feedback.setForeground(Color.WHITE);
         sortir.setForeground(Color.WHITE);
 
-        jouer.setBackground(new Color(5, 40, 127));
-        jouer_multi.setBackground(new Color(5, 40, 127));
-        rules.setBackground(new Color(5, 40, 127));
-        feedback.setBackground(new Color(5, 40, 127));
-        sortir.setBackground(new Color(5, 40, 127));
+        jouer.setBackground(CustomColor.BLUE);
+        jouer_multi.setBackground(CustomColor.BLUE);
+        rules.setBackground(CustomColor.BLUE);
+        feedback.setBackground(CustomColor.BLUE);
+        sortir.setBackground(CustomColor.BLUE);
 
         jouer.setPreferredSize(taille);
         jouer_multi.setPreferredSize(taille);
@@ -61,18 +83,18 @@ public class MenuPanel extends Box {
         sortir.setPreferredSize(taille);
 
         
-
+        Dimension d = new Dimension(700, 10);
         menu.add(Box.createRigidArea(new Dimension(700, 70)));
         menu.add(logo);
         menu.add(Box.createRigidArea(new Dimension(700, 80)));
         menu.add(jouer);
-        menu.add(Box.createRigidArea(new Dimension(700, 10))); // Implementation des éléments dans la fenetre avec boxlayout
+        menu.add(Box.createRigidArea(d));
         menu.add(jouer_multi);
-        menu.add(Box.createRigidArea(new Dimension(700, 10)));  
+        menu.add(Box.createRigidArea(d));
         menu.add(rules);
-        menu.add(Box.createRigidArea(new Dimension(700, 10)));  
+        menu.add(Box.createRigidArea(d));
         menu.add(feedback);
-        menu.add(Box.createRigidArea(new Dimension(700, 10)));
+        menu.add(Box.createRigidArea(d));
         menu.add(sortir);
 
         this.add(Box.createVerticalGlue());
@@ -80,4 +102,5 @@ public class MenuPanel extends Box {
         this.add(Box.createVerticalGlue());
         
     }
+
 }

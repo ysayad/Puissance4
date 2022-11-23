@@ -1,10 +1,18 @@
 import java.awt.*;
 
+/**
+ *CustomColor is the class to create custom colors for the game
+ * @author Kamil Mardaci
+ * @author Yannis Bouarroudj
+ * @author Etann De Sousa Alves
+ * @author Youcef Sayad
+ * @version 1.0
+ */
 public class CustomColor {
     
-    public static Color YELLOW = new Color(255, 200, 70);
+    public static Color YELLOW = new Color(237, 190, 73);
 
-    public static Color RED = new Color(255, 40, 60);
+    public static Color RED = new Color(228, 46, 64);
 
     public static Color GREEN = new Color(0, 200, 100);
 
@@ -23,4 +31,5 @@ public class CustomColor {
     public static Color WHITE = new Color(254, 254, 254);
 
     public static Color BLACK = new Color(1, 1, 1);
+
 }
