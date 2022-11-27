@@ -22,7 +22,7 @@ public class Jeu {
     private final int colNum = 7;
     private final int rowNum = 6;
     private boolean finished = false;
-    private ArrayList<Object> scoreboard = new ArrayList<>();
+    private ArrayList<Integer> scoreboard = new ArrayList<>();
     private final HoverBar hoverBar = new HoverBar(this);
 
 
@@ -65,7 +65,7 @@ public class Jeu {
      * @param val takes a value and add it to the scoreboard
      */
     public void addToScoreboard(int val){
-        this.scoreboard.add(Integer.toString(val));
+        this.scoreboard.add(val);
 
     }
 
@@ -73,7 +73,7 @@ public class Jeu {
      *
      * @return scoreboard
      */
-    public ArrayList<Object> getScoreboard(){
+    public ArrayList<Integer> getScoreboard(){
         return this.scoreboard;
         
     }

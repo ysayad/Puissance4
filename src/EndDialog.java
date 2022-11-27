@@ -70,11 +70,31 @@ public class EndDialog extends JDialog {
     public void refresh(){
         
         this.gagnant1 = new JLabel("Gagnant 1 : Joueur "+ this.jeu.getScoreboard().get(0));
+        System.out.println(this.jeu.getScoreboard().get(0));
+        if (this.jeu.getScoreboard().get(0) == Integer.valueOf(1) ) {
+            this.gagnant1.setForeground(CustomColor.RED);
+        }
+        if (this.jeu.getScoreboard().get(0) == Integer.valueOf(2) ) {
+            this.gagnant1.setForeground(CustomColor.YELLOW);
+        }
+        if (this.jeu.getScoreboard().get(0) == Integer.valueOf(3) ) {
+            this.gagnant1.setForeground(CustomColor.GREEN);
+        }
         this.gagnant1.setHorizontalAlignment(JLabel.CENTER);
         this.add(gagnant1);
         // if(this.jeu.getMode()==3){
         try {
             this.gagnant2 = new JLabel("Gagnant 2 : Joueur "+ this.jeu.getScoreboard().get(1));
+
+            if (this.jeu.getScoreboard().get(1) == Integer.valueOf(1) ) {
+                this.gagnant2.setForeground(CustomColor.RED);
+            }
+            if (this.jeu.getScoreboard().get(1) == Integer.valueOf(2) ) {
+                this.gagnant2.setForeground(CustomColor.YELLOW);
+            }
+            if (this.jeu.getScoreboard().get(1) == Integer.valueOf(3) ) {
+                this.gagnant2.setForeground(CustomColor.GREEN);
+            }
             this.gagnant2.setHorizontalAlignment(JLabel.CENTER);
             this.add(gagnant2);
         } catch (IndexOutOfBoundsException e){
